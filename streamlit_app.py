@@ -54,9 +54,6 @@ def getfruit_load_list():
     my_cur.execute("SELECT * from fruit_load_list")
     return my_cur.fetchall()
 
-add_my_fruit = streamlit.text_input('What Fruit would you like to add?')
-added_fruit = insert_new_fruit(add_my_fruit)
-streamlit.text(added_fruit)
 
 #Add a button to load the fruit
 if streamlit.button('Get Fruit Load List'):
@@ -64,6 +61,10 @@ if streamlit.button('Get Fruit Load List'):
   my_data_rows = getfruit_load_list()
   my_cnx.close()
   streamlit.dataframe(my_data_rows)
+  
+add_my_fruit = streamlit.text_input('What Fruit would you like to add?')
+added_fruit = insert_new_fruit(add_my_fruit)
+streamlit.text(added_fruit)
 
 #aAllow Users to add a fruit to the list
 def insert_new_fruit(fruit_name):
